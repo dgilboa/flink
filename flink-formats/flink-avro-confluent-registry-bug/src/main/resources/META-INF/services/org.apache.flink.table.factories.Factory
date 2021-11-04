@@ -14,4 +14,3 @@
 # limitations under the License.
 
 org.apache.flink.formats.avro.registry.confluent.BugRegistryAvroFormatFactory
-#org.apache.flink.formats.avro.registry.confluent.debezium.DebeziumAvroFormatFactory
