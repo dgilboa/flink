@@ -207,7 +207,7 @@ public class RegistryAvroFormatFactoryTest {
         options.put("target", "MyTarget");
         options.put("buffer-size", "1000");
 
-        options.put("format", RegistryAvroFormatFactory.IDENTIFIER);
+        options.put("format", BugRegistryAvroFormatFactory.IDENTIFIER);
         options.put("avro-confluent.schema-registry.subject", SUBJECT);
         options.put("avro-confluent.schema-registry.url", REGISTRY_URL);
         return options;
@@ -234,7 +234,7 @@ public class RegistryAvroFormatFactoryTest {
                                         opts.put(
                                                 String.format(
                                                         "%s.%s",
-                                                        RegistryAvroFormatFactory.IDENTIFIER, k),
+                                                        BugRegistryAvroFormatFactory.IDENTIFIER, k),
                                                 v)));
     }
 

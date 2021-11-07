@@ -73,7 +73,7 @@ public class ConfluentSchemaRegistryCoder implements SchemaCoder {
             try {
                 return schemaRegistryClient.getById(schemaId);
             } catch (RestClientException e) {
-                println(s"XXX: no schema found for $schemaId")
+                System.out.println(format("ZZZ: no schema found for %s", schemaId));
                 throw new IOException(
                         format("Could not find schema with id %s in registry", schemaId), e);
             }

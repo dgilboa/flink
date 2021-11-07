@@ -30,6 +30,9 @@ import javax.annotation.Nullable;
 
 import java.util.Map;
 
+import java.io.IOException;
+
+
 /**
  * Deserialization schema that deserializes from Avro binary format using {@link SchemaCoder} that
  * uses Confluent Schema Registry.
@@ -42,6 +45,62 @@ public class ConfluentRegistryAvroDeserializationSchema<T>
     private static final int DEFAULT_IDENTITY_MAP_CAPACITY = 1000;
 
     private static final long serialVersionUID = -1671641202177852775L;
+
+//    @Override
+//    public T deserialize(@Nullable byte[] message) throws IOException {
+////        if (message == null) {
+////            return null;
+////        }
+////        checkAvroInitialized();
+////        getInputStream().setBuffer(message);
+////        Schema writerSchema = schemaCoder.readSchema(getInputStream());
+////        Schema readerSchema = getReaderSchema();
+////
+////        GenericDatumReader<T> datumReader = getDatumReader();
+////
+////        datumReader.setSchema(writerSchema);
+////        datumReader.setExpected(readerSchema);
+////
+////        return datumReader.read(null, getDecoder());
+//
+////        try {
+////            return datumReader.read(null, getDecoder());
+////        } catch (Exception e) {
+////            System.out.println("XXX: ");
+////            e.printStackTrace();
+//////            System.out.println("YYY: ", writerSchema, "\n", readerSchema.toString());
+////            throw e;
+////        }
+//
+//        try {
+//            return super.deserialize(message);
+//        } catch (IOException e) {
+//            System.out.println("XXX: ");
+//            e.printStackTrace();
+////            System.out.println("YYY: ", writerSchema, "\n", readerSchema.toString());
+//            throw e;
+//        }
+//    }
+
+//    /**
+//     * Deserializes the byte message.
+//     *
+//     * <p>Can output multiple records through the {@link Collector}. Note that number and size of
+//     * the produced records should be relatively small. Depending on the source implementation
+//     * records can be buffered in memory or collecting records might delay emitting checkpoint
+//     * barrier.
+//     *
+//     * @param message The message, as a byte array.
+//     * @param out The collector to put the resulting messages.
+//     */
+//    @PublicEvolving
+//    default void deserialize(byte[] message, Collector<T> out) throws IOException {
+//        System.out.println("In deserialize with collector");
+//        T deserialize = deserialize(message);
+//        if (deserialize != null) {
+//            out.collect(deserialize);
+//        }
+//    }
 
     /**
      * Creates a Avro deserialization schema.

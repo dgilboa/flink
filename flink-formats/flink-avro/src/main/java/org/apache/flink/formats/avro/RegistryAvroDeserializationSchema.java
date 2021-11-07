@@ -78,7 +78,16 @@ public class RegistryAvroDeserializationSchema<T> extends AvroDeserializationSch
         datumReader.setSchema(writerSchema);
         datumReader.setExpected(readerSchema);
 
-        return datumReader.read(null, getDecoder());
+        try {
+            T t = datumReader.read(null, getDecoder());
+            return t;
+        } catch (Exception e) {
+            System.out.println("SOMO: " + e.getMessage());
+            System.out.println("SUSU: " + writerSchema.getFullName() + " " + readerSchema.getFullName());
+            e.printStackTrace();
+            throw new IOException("MMM: My exception " + writerSchema.getFullName() + " " + readerSchema.getFullName());
+        }
+
     }
 
     @Override
